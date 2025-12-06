@@ -1,5 +1,5 @@
 # Maintainer: Your Name <your@email.com>
-pkgname=gr-funcube
+pkgname=gr-funcube-git
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="gr-funcube is an linux oot-module for gnuradio to implement a funcube dongle and a funcube dongle pro+"
@@ -11,6 +11,11 @@ makedepends=('cmake') # CMake is a build dependency
 
 source=("https://github.com/amaroq74/gr-funcube")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd $_gitname
+  git describe --always | sed 's|-|.|g; s|^.||'
+}
 
 build() {
   # Create a build directory and navigate into it
